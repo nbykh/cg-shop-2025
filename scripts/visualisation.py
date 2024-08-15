@@ -1,8 +1,21 @@
+import os
 import json
 import matplotlib.pyplot as plt
 
 
-def plot_from_json_file(filename):
+def save_plot(fig, filename):
+    base_name = os.path.basename(filename).replace('.instance.json', '')
+    output_dir = 'visualisations'
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, f'{base_name}.png')
+
+    fig.savefig(output_file, bbox_inches='tight')
+    plt.close(fig)
+
+    print(f"Saved plot to {output_file}")
+
+
+def plot_from_json_file(filename, saved=False):
     with open(filename, 'r') as f:
         json_data = json.load(f)
 
@@ -34,8 +47,11 @@ def plot_from_json_file(filename):
 
     plt.show()
 
+    if saved:
+        save_plot(fig, filename)
+
 
 if __name__ == "__main__":
-    file1 = 'data/example_instances_rev1/cgshop2025_examples_ortho_20_b099d1fe.instance.json'
+    file_name = 'data/example_instances_rev1/cgshop2025_examples_ortho_20_b099d1fe.instance.json'
 
-    plot_from_json_file(file1)
+    plot_from_json_file(file_name, saved=True)
