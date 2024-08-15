@@ -24,6 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
         # Runs a set of commands using the runners shell
       - name: test
@@ -33,5 +35,6 @@ jobs:
           sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
           echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
           sudo apt update && sudo apt install bazel
+          git submodule update --init --recursive
           bazel build //test:test
-          ./bazel-bin/test/test
+          bazel run //test:test
