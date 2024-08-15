@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Bazel
+bazel*
+MODULE.bazel.lock
+
+# External libraries
+lib/
