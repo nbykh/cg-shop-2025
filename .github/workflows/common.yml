@@ -15,8 +15,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "test"
+  test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -26,15 +26,20 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-
-        # Runs a set of commands using the runners shell
-      - name: test
+          
+      # Installs Bazel
+      - name: bazel
         run: |
           sudo apt install apt-transport-https curl gnupg -y
           curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
           sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
           echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
           sudo apt update && sudo apt install bazel
-          git submodule update --init --recursive
-          bazel build //test:test
-          bazel run //test:test
+          
+      # Builds the tests
+      - name: build
+        run: bazel build //test:test
+      
+      # Runs the tests
+      - name: test
+        run: bazel run //test:test
