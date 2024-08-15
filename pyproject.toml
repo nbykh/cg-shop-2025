@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cgshop2025-visualization"
+version = "0.1.0"
+description = "A script for visualizing CGSHOP2025 data"
+authors = ["Damir Salakhov <damir-salakhov@mail.ru>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.26.4"
+matplotlib = "^3.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
