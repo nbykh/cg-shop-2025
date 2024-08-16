@@ -403,3 +403,6 @@ MODULE.bazel.lock
 
 # External libraries
 lib/
+
+# Any output directory
+visualisations/
