@@ -24,11 +24,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      # installs clang-format
-      - name: install clang-format
+      # installs required packages
+      - name: install packages
         run: |
           sudo apt update
-          sudo apt install clang-format -y
+          sudo apt install clang-format python3-autopep8 pycodestyle -y
       # sets the alias to clang-format
       - name: set alias
         run: echo "clang-format=clang-format-18" >> $GITHUB_ENV
