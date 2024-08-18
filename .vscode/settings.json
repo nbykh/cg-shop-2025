@@ -64,6 +64,7 @@
         "algorithm": "cpp",
         "cinttypes": "cpp",
         "future": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "numbers": "cpp"
     }
 }
