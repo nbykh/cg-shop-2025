@@ -4,3 +4,7 @@
 #
 # For more details, please check https://github.com/bazelbuild/bazel/issues/18958
 ###############################################################################
+module(name = "triangulator", version = "0.0")
+
+bazel_dep(name = "catch2")
+git_override(module_name = "catch2", remote = "https://github.com/catchorg/Catch2.git", commit = "31588bb4f56b638dd5afc28d3ebff9b9dcefb88d", init_submodules = True)
