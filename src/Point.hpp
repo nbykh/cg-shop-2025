@@ -10,7 +10,7 @@ class Point {
 public:
   static constexpr double accuracy = 1e-10;
 
-  Point() = delete;
+  Point() = default;
   Point(const double x, const double y) : _x{x}, _y{y} {}
 
   [[nodiscard]] double x() const { return _x; }
@@ -22,8 +22,8 @@ public:
                                        const Point &pointB);
 
 private:
-  double _x;
-  double _y;
+  double _x{0.0};
+  double _y{0.0};
 };
 } // namespace triangulator
 
