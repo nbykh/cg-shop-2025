@@ -1,7 +1,7 @@
 #include "Triangle.hpp"
 #include "Utils.hpp"
-#include <exception>
-#include <iostream>
+#include <stdexcept>
+#include <cmath>
 
 namespace triangulator {
 Triangle::Triangle(const std::set<Point> &corners) {
