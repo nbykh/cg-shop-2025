@@ -2,7 +2,7 @@ cc_binary(
     name = "test",
     srcs = ["main.cpp", "TestJsonLibrary.cpp"],
     deps = [
-        "//lib/json:json",
+        "@nlohmann_json//:json",
         "@catch2",
     ],
 )
