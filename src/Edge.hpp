@@ -2,6 +2,7 @@
 #define _EDGE_HPP_
 
 #include "Point.hpp"
+#include <cstddef>
 #include <set>
 
 namespace triangulator {

@@ -44,7 +44,7 @@ bool Triangle::operator==(const Triangle &other) const {
   return true;
 }
 
-const Edge &Triangle::getEdge(size_t iEdge) const {
+const Edge &Triangle::getEdge(const size_t iEdge) const {
   return *std::next(_edges.cbegin(), iEdge % numEdges);
 }
 

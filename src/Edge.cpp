@@ -25,7 +25,7 @@ bool Edge::operator<(const Edge &other) const {
   return getPoint(1) == other.getPoint(1);
 }
 
-const Point &Edge::getPoint(size_t iPoint) const {
+const Point &Edge::getPoint(const size_t iPoint) const {
   return *std::next(_points.cbegin(), iPoint % numPoints);
 }
 
