@@ -1,0 +1,8 @@
+cc_test(
+    name = "test",
+    srcs = glob(["test/*.cpp"]),
+    deps = [
+        "@nlohmann_json//:json",
+        "@catch2//:catch2_main",
+    ],
+)
