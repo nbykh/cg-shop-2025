@@ -1,8 +1,0 @@
-[submodule "lib/json"]
-	path = lib/json
-	url = git@github.com:nlohmann/json.git
-	shallow = true
-[submodule "lib/catch2"]
-	path = lib/catch2
-	url = https://github.com/catchorg/Catch2.git
-	shallow = true
