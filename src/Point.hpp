@@ -1,8 +1,6 @@
 #ifndef _POINT_HPP_
 #define _POINT_HPP_
 
-#include <cstddef>
-#include <functional>
 #include <vector>
 
 namespace triangulator {
@@ -26,12 +24,5 @@ private:
   double _y{0.0};
 };
 } // namespace triangulator
-
-template <> struct std::hash<triangulator::Point> {
-  std::size_t operator()(const triangulator::Point &point) {
-    return 31 * (31 * std::hash<double>{}(point.x()) + 17) +
-           std::hash<double>{}(point.y());
-  }
-};
 
 #endif // _POINT_HPP_

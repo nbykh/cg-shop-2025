@@ -2,6 +2,7 @@
 #define _EDGE_HPP_
 
 #include "Point.hpp"
+#include <set>
 
 namespace triangulator {
 class Edge {
@@ -14,18 +15,17 @@ public:
 
   [[nodiscard]] bool isCongruent(const Edge &other) const;
 
-  [[nodiscard]] bool isOpposite(const Edge &other) const;
-
   [[nodiscard]] bool operator==(const Edge &other) const;
 
   [[nodiscard]] bool operator<(const Edge &other) const;
 
-  [[nodiscard]] Edge operator!() const;
-
 private:
-  Point _pointA{};
-  Point _pointB{};
+  static constexpr size_t numPoints = 2;
+
+  std::set<Point> _points{};
   double _length{0.0};
+
+  [[nodiscard]] const Point &getPoint(size_t iPoint) const;
 };
 } // namespace triangulator
 

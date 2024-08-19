@@ -4,31 +4,29 @@
 namespace triangulator {
 
 Edge::Edge(const Point &pointA, const Point &pointB)
-    : _pointA{pointA}, _pointB{pointB},
+    : _points{pointA, pointB},
       _length{Point::distance(pointA, pointB)} {}
 
 bool Edge::isCongruent(const Edge &other) const {
   return isEqual(_length, other._length);
 }
 
-bool Edge::isOpposite(const Edge &other) const {
-  return (_pointA == other._pointB) && (_pointB == other._pointA);
-}
-
 bool Edge::operator==(const Edge &other) const {
-  return (_pointA == other._pointA) && (_pointB == other._pointB);
+  return (getPoint(0) == other.getPoint(0)) && (getPoint(1) == other.getPoint(1));
 }
 
 bool Edge::operator<(const Edge &other) const {
   if (!isEqual(_length, other._length)) {
     return isLess(_length, other._length);
   }
-  if (!(_pointA == other._pointA)) {
-    return _pointA < other._pointA;
+  if (!(getPoint(0) == other.getPoint(0))) {
+    return getPoint(0) < other.getPoint(0);
   }
-  return _pointB < other._pointB;
+  return getPoint(1) == other.getPoint(1);
 }
 
-Edge Edge::operator!() const { return {_pointB, _pointA}; }
+const Point &Edge::getPoint(size_t iPoint) const {
+  return *std::next(_points.cbegin(), iPoint % numPoints);
+}
 
 } // namespace triangulator
