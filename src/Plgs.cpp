@@ -46,7 +46,7 @@ nlohmann::json Pslg::toJson() const {
   json["additional_constraints"] = nlohmann::json::array();
   for (auto iEdge = 0U; iEdge < _edges.size(); ++iEdge) {
     const auto &edge = _edges.at(iEdge);
-    json["additional_constraints"].at(iEdge) = {edge.first, edge.second};
+    json["additional_constraints"][iEdge] = {edge.first, edge.second};
   }
   return json;
 }
