@@ -8,14 +8,14 @@
 namespace triangulator {
 class Triangle {
 public:
-  Triangle(const std::set<Point> &corners);
+  explicit Triangle(const std::set<Point> &corners);
 
   [[nodiscard]] bool nonObtuse() const;
   [[nodiscard]] bool isCongruent(const Triangle &other) const;
   [[nodiscard]] bool operator==(const Triangle &other) const;
 
 private:
-  static constexpr int numEdges = 3;
+  static constexpr int _numEdges = 3;
 
   std::set<Edge> _edges{};
 

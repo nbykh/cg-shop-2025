@@ -10,8 +10,8 @@ Triangle::Triangle(const std::set<Point> &corners) {
         "invalid number of corners or some corners are the same");
   }
   for (auto iEdge = 0U; iEdge < 3U; ++iEdge) {
-    _edges.insert({*std::next(corners.cbegin(), (iEdge + 1) % numEdges),
-                   *std::next(corners.cbegin(), (iEdge + 2) % numEdges)});
+    _edges.insert({*std::next(corners.cbegin(), (iEdge + 1) % _numEdges),
+                   *std::next(corners.cbegin(), (iEdge + 2) % _numEdges)});
   }
   if (_edges.size() != 3U) {
     throw std::logic_error(
@@ -26,7 +26,7 @@ bool Triangle::nonObtuse() const {
 }
 
 bool Triangle::isCongruent(const Triangle &other) const {
-  for (auto iEdge = 0U; iEdge < numEdges; ++iEdge) {
+  for (auto iEdge = 0U; iEdge < _numEdges; ++iEdge) {
     if (!isEqual(getEdge(iEdge).getLength(),
                  other.getEdge(iEdge).getLength())) {
       return false;
@@ -36,7 +36,7 @@ bool Triangle::isCongruent(const Triangle &other) const {
 }
 
 bool Triangle::operator==(const Triangle &other) const {
-  for (auto iEdge = 0U; iEdge < numEdges; ++iEdge) {
+  for (auto iEdge = 0U; iEdge < _numEdges; ++iEdge) {
     if (!(getEdge(iEdge) == other.getEdge(iEdge))) {
       return false;
     }
@@ -45,7 +45,7 @@ bool Triangle::operator==(const Triangle &other) const {
 }
 
 const Edge &Triangle::getEdge(const size_t iEdge) const {
-  return *std::next(_edges.cbegin(), iEdge % numEdges);
+  return *std::next(_edges.cbegin(), iEdge % _numEdges);
 }
 
 } // namespace triangulator

@@ -10,7 +10,7 @@ namespace triangulator {
 
 class Pslg {
 public:
-  Pslg(const nlohmann::json &json);
+  explicit Pslg(const nlohmann::json &json);
 
   [[nodiscard]] nlohmann::json toJson() const;
 

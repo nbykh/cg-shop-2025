@@ -21,7 +21,7 @@ public:
   [[nodiscard]] bool operator<(const Edge &other) const;
 
 private:
-  static constexpr size_t numPoints = 2;
+  static constexpr size_t _numPoints = 2;
 
   std::set<Point> _points{};
   double _length{0.0};

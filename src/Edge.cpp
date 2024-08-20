@@ -26,7 +26,7 @@ bool Edge::operator<(const Edge &other) const {
 }
 
 const Point &Edge::getPoint(const size_t iPoint) const {
-  return *std::next(_points.cbegin(), iPoint % numPoints);
+  return *std::next(_points.cbegin(), iPoint % _numPoints);
 }
 
 } // namespace triangulator
