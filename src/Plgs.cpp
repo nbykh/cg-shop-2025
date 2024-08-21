@@ -11,7 +11,7 @@ Pslg::Pslg(const nlohmann::json &json) {
       json["points_y"].size() != numPoints) {
     throw std::logic_error("invalid json");
   }
-  for (auto iPoint = 0U; iPoint < numPoints; ++iPoint) {
+  for (size_t iPoint = 0; iPoint < numPoints; ++iPoint) {
     _points.emplace_back(json["points_x"].at(iPoint),
                          json["points_y"].at(iPoint));
   }
@@ -23,7 +23,7 @@ Pslg::Pslg(const nlohmann::json &json) {
   if (json["additional_constraints"].size() != numEdges) {
     throw std::logic_error("invalid json");
   }
-  for (auto iEdge = 0U; iEdge < numEdges; ++iEdge) {
+  for (size_t iEdge = 0; iEdge < numEdges; ++iEdge) {
     _edges.emplace_back(json["additional_constraints"].at(iEdge)[0],
                         json["additional_constraints"].at(iEdge)[1]);
   }
@@ -33,18 +33,18 @@ nlohmann::json Pslg::toJson() const {
   auto json = nlohmann::json{};
   json["instance_uid"] = _instanceUid;
   json["num_points"] = _points.size();
-  for (auto iPoint = 0U; iPoint < _points.size(); ++iPoint) {
+  for (size_t iPoint = 0; iPoint < _points.size(); ++iPoint) {
     const auto &point = _points.at(iPoint);
     json["points_x"][iPoint] = point.x();
     json["points_y"][iPoint] = point.y();
   }
-  for (auto iBoundaryPoint = 0U; iBoundaryPoint < _boundary.size();
+  for (size_t iBoundaryPoint = 0; iBoundaryPoint < _boundary.size();
        ++iBoundaryPoint) {
     json["region_boundary"][iBoundaryPoint] = _boundary.at(iBoundaryPoint);
   }
   json["num_constraints"] = _edges.size();
   json["additional_constraints"] = nlohmann::json::array();
-  for (auto iEdge = 0U; iEdge < _edges.size(); ++iEdge) {
+  for (size_t iEdge = 0; iEdge < _edges.size(); ++iEdge) {
     const auto &edge = _edges.at(iEdge);
     json["additional_constraints"][iEdge] = {edge.first, edge.second};
   }

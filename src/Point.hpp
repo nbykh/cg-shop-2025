@@ -6,8 +6,6 @@
 namespace triangulator {
 class Point {
 public:
-  static constexpr double accuracy = 1e-10;
-
   Point() = default;
   Point(const double x, const double y) : _x{x}, _y{y} {}
 

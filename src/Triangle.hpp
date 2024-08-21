@@ -15,7 +15,7 @@ public:
   [[nodiscard]] bool operator==(const Triangle &other) const;
 
 private:
-  static constexpr int _numEdges = 3;
+  static constexpr size_t _numEdges = 3;
 
   std::set<Edge> _edges{};
 
