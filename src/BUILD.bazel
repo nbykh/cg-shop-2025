@@ -1,0 +1,9 @@
+cc_library(
+    name = "triangulator",
+    hdrs = glob(["*.hpp"]),
+    srcs = glob(["*.cpp"]),
+    deps = [
+        "@nlohmann_json//:json",
+    ],
+    visibility = ["//visibility:public"],
+)

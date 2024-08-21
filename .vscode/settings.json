@@ -61,6 +61,10 @@
         "valarray": "cpp",
         "variant": "cpp",
         "vector": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "cinttypes": "cpp",
+        "future": "cpp",
+        "stack": "cpp",
+        "numbers": "cpp"
     }
 }

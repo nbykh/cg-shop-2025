@@ -1,7 +1,9 @@
 cc_test(
     name = "test",
     srcs = glob(["test/*.cpp"]),
+    data = glob(["data/example_instances_rev1/*.json"]),
     deps = [
+        "//src:triangulator",
         "@nlohmann_json//:json",
         "@catch2//:catch2_main",
     ],
