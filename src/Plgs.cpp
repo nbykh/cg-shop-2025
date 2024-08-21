@@ -5,12 +5,16 @@
 namespace triangulator {
 
 Pslg::Pslg(const nlohmann::json &json) {
-  _instanceUid = json["instance_uid"];
+  // check consistency
   const auto numPoints = json["num_points"].get<size_t>();
+  const auto numEdges = json["num_constraints"].get<size_t>();
   if (json["points_x"].size() != numPoints ||
-      json["points_y"].size() != numPoints) {
+      json["points_y"].size() != numPoints || 
+      json["additional_constraints"].size() != numEdges) {
     throw std::logic_error("invalid json");
   }
+  // initialise
+  _instanceUid = json["instance_uid"];
   for (size_t iPoint = 0; iPoint < numPoints; ++iPoint) {
     _points.emplace_back(json["points_x"].at(iPoint),
                          json["points_y"].at(iPoint));
@@ -18,10 +22,6 @@ Pslg::Pslg(const nlohmann::json &json) {
   for (auto iBoundaryPoint = 0U;
        iBoundaryPoint < json["region_boundary"].size(); ++iBoundaryPoint) {
     _boundary.emplace_back(json["region_boundary"].at(iBoundaryPoint));
-  }
-  const auto numEdges = json["num_constraints"].get<size_t>();
-  if (json["additional_constraints"].size() != numEdges) {
-    throw std::logic_error("invalid json");
   }
   for (size_t iEdge = 0; iEdge < numEdges; ++iEdge) {
     _edges.emplace_back(json["additional_constraints"].at(iEdge)[0],
