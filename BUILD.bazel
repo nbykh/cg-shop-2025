@@ -8,3 +8,9 @@ cc_test(
         "@catch2//:catch2_main",
     ],
 )
+
+py_binary(
+    name = "visualisation",
+    srcs = ["scripts/visualisation.py"],
+    data = glob(["data/example_instances_rev1/*.json"]),
+)
