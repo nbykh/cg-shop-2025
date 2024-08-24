@@ -13,7 +13,11 @@ Also we use the following packages:
 ## MacOS
 For Mac OS, the required packages may be installed via `brew`:
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && brew update && brew install bazel clang-format poetry
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew update 
+brew install bazel clang-format pipx
+pipx install poetry
+poetry install
 ```
 ## Ubuntu
 For Ubuntu, use the native `apt`:
@@ -25,6 +29,7 @@ sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
 sudo apt update && sudo apt install bazel -y
 pipx install poetry
+poetry install
 ```
 # Installation
 1. Clone the repository into the desired directory:
