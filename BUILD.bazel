@@ -1,5 +1,8 @@
 cc_test(
     name = "test",
+    size = "small",
+    shard_count = 4,
+    args = ["-v high", "-d yes"],
     srcs = glob(["test/*.cpp"]),
     data = glob(["data/example_instances_rev1/*.json"]),
     deps = [
