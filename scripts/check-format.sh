@@ -6,7 +6,7 @@ if [[ $? -ne 0 ]]; then
     exit_code=1
 fi
 
-find ./scripts -iname '*.py' | xargs pycodestyle --first
+black --check scripts/*.py
 if [[ $? -ne 0 ]]; then
     exit_code=1
 fi

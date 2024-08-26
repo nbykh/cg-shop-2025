@@ -5,19 +5,19 @@ import matplotlib.pyplot as plt
 
 
 def save_plot(fig, filename):
-    base_name = os.path.basename(filename).replace('.instance.json', '')
-    output_dir = 'visualisations'
+    base_name = os.path.basename(filename).replace(".instance.json", "")
+    output_dir = "visualisations"
     os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, f'{base_name}.png')
+    output_file = os.path.join(output_dir, f"{base_name}.png")
 
-    fig.savefig(output_file, bbox_inches='tight')
+    fig.savefig(output_file, bbox_inches="tight")
     plt.close(fig)
 
     print(f"Saved plot to {output_file}")
 
 
 def plot_from_json_file(filename, saved=False):
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         json_data = json.load(f)
 
     points_x = json_data["points_x"]
@@ -30,11 +30,13 @@ def plot_from_json_file(filename, saved=False):
     for i in range(len(region_boundary)):
         start_index = region_boundary[i]
         end_index = region_boundary[(i + 1) % len(region_boundary)]
-        ax.plot([points_x[start_index], points_x[end_index]],
-                [points_y[start_index], points_y[end_index]],
-                'b-')
+        ax.plot(
+            [points_x[start_index], points_x[end_index]],
+            [points_y[start_index], points_y[end_index]],
+            "b-",
+        )
 
-    ax.plot(points_x, points_y, 'ko')
+    ax.plot(points_x, points_y, "ko")
 
     padding_x = (max(points_x) - min(points_x)) * 0.05
     padding_y = (max(points_y) - min(points_y)) * 0.05
@@ -54,11 +56,11 @@ def plot_from_json_file(filename, saved=False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-                    prog='visualisation',
-                    description='visualises instance data for CG SHOP 2025')
+        prog="visualisation", description="visualises instance data for CG SHOP 2025"
+    )
     parser.add_argument("instance_name")
-    parser.add_argument("-s", "--save", action='store_true')
+    parser.add_argument("-s", "--save", action="store_true")
     args = parser.parse_args()
-    
-    file_name = 'data/example_instances_rev1/' + args.instance_name + '.instance.json'
+
+    file_name = "data/example_instances_rev1/" + args.instance_name + ".instance.json"
     plot_from_json_file(file_name, args.save)

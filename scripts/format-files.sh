@@ -1,4 +1,6 @@
 #!/bin/bash
 
+# format C++ files
 find ./test -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format -i
-find ./scripts -iname '*.py' | xargs autopep8 -i
+# format Python files
+black scripts/*.py

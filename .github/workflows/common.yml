@@ -28,7 +28,7 @@ jobs:
       - name: install packages
         run: |
           sudo apt update
-          sudo apt install clang-format python3-autopep8 pycodestyle -y
+          sudo apt install clang-format black -y
       # sets the alias to clang-format
       - name: set alias
         run: echo "clang-format=clang-format-18" >> $GITHUB_ENV
