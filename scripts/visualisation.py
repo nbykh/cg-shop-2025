@@ -1,3 +1,4 @@
+import argparse
 import os
 import json
 import matplotlib.pyplot as plt
@@ -52,6 +53,12 @@ def plot_from_json_file(filename, saved=False):
 
 
 if __name__ == "__main__":
-    file_name = 'data/example_instances_rev1/cgshop2025_examples_ortho_20_b099d1fe.instance.json'
-
-    plot_from_json_file(file_name, saved=True)
+    parser = argparse.ArgumentParser(
+                    prog='visualisation',
+                    description='visualises instance data for CG SHOP 2025')
+    parser.add_argument("instance_name")
+    parser.add_argument("-s", "--save", action='store_true')
+    args = parser.parse_args()
+    
+    file_name = 'data/example_instances_rev1/' + args.instance_name + '.instance.json'
+    plot_from_json_file(file_name, args.save)
