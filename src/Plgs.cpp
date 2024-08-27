@@ -51,9 +51,4 @@ nlohmann::json Pslg::toJson() const {
   return json;
 }
 
-bool Pslg::operator==(const Pslg &other) const {
-  return _instanceUid == other._instanceUid && _points == other._points &&
-         _boundary == other._boundary && _edges == other._edges;
-}
-
 } // namespace triangulator
