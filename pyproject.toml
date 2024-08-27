@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "cgshop2025-visualization"
 version = "0.1.0"
+package-mode = false
 description = "A script for visualizing CGSHOP2025 data"
 authors = ["Damir Salakhov <damir-salakhov@mail.ru>"]
 license = "GPL-3.0-or-later"
