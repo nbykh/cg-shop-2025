@@ -15,7 +15,27 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "test"
+  # This workflow contains two jobs: "format" (to check formatting across the codebase) and "test" (to run tests)
+  format:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      # installs required packages
+      - name: install packages
+        run: |
+          sudo apt update
+          sudo apt install clang-format black -y
+      # sets the alias to clang-format
+      - name: set alias
+        run: echo "clang-format=clang-format-18" >> $GITHUB_ENV
+      # checks the format
+      - name: check format
+        run: sh ./scripts/check-format.sh
+
   test:
     # The type of runner that the job will run on
     runs-on: self-hosted
