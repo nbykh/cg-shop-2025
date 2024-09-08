@@ -9,7 +9,7 @@ Pslg::Pslg(const nlohmann::json &json) {
   const auto numPoints = json["num_points"].get<size_t>();
   const auto numEdges = json["num_constraints"].get<size_t>();
   if (json["points_x"].size() != numPoints ||
-      json["points_y"].size() != numPoints || 
+      json["points_y"].size() != numPoints ||
       json["additional_constraints"].size() != numEdges) {
     throw std::logic_error("invalid json");
   }
@@ -49,6 +49,14 @@ nlohmann::json Pslg::toJson() const {
     json["additional_constraints"][iEdge] = {edge.first, edge.second};
   }
   return json;
+}
+
+const std::string &Pslg::getInstanceUid() const { return _instanceUid; }
+
+const std::vector<size_t> &Pslg::getBoundary() const { return _boundary; }
+
+const std::vector<std::pair<size_t, size_t>> &Pslg::getEdges() const {
+  return _edges;
 }
 
 } // namespace triangulator

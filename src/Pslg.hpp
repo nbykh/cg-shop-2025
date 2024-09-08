@@ -14,13 +14,13 @@ public:
 
   [[nodiscard]] nlohmann::json toJson() const;
 
-  [[nodiscard]] const std::string& getInstanceUid() const {return _instanceUid; }
+  [[nodiscard]] const std::string &getInstanceUid() const;
 
-  [[nodiscard]] const std::vector<Point> &getPoints() const {return _points; }
+  [[nodiscard]] const std::vector<Point> &getPoints() const { return _points; }
 
-  [[nodiscard]] const std::vector<size_t> &getBoundary() const {return _boundary; }
+  [[nodiscard]] const std::vector<size_t> &getBoundary() const;
 
-  [[nodiscard]] const std::vector<std::pair<size_t, size_t>> &getEdges() const {return _edges; }
+  [[nodiscard]] const std::vector<std::pair<size_t, size_t>> &getEdges() const;
 
 private:
   std::string _instanceUid{};

@@ -34,6 +34,6 @@ TEST_CASE("Test class Pslg") {
     const auto pslgJson1 = pslg.toJson();
     CHECK(pslgJson == pslgJson1);
     const auto pslg1 = Pslg(pslgJson1);
-    checkSamePslg(pslg,pslg1);
+    checkSamePslg(pslg, pslg1);
   }
 }
