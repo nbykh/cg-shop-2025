@@ -4,15 +4,15 @@
 namespace triangulator {
 
 Edge::Edge(const Point &pointA, const Point &pointB)
-    : _points{pointA, pointB},
-      _length{Point::distance(pointA, pointB)} {}
+    : _points{pointA, pointB}, _length{Point::distance(pointA, pointB)} {}
 
 bool Edge::isCongruent(const Edge &other) const {
   return isEqual(_length, other._length);
 }
 
 bool Edge::operator==(const Edge &other) const {
-  return (getPoint(0) == other.getPoint(0)) && (getPoint(1) == other.getPoint(1));
+  return (getPoint(0) == other.getPoint(0)) &&
+         (getPoint(1) == other.getPoint(1));
 }
 
 bool Edge::operator<(const Edge &other) const {

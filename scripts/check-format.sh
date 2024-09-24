@@ -6,6 +6,11 @@ if [[ $? -ne 0 ]]; then
     exit_code=1
 fi
 
+find ./src -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format --dry-run --Werror -i
+if [[ $? -ne 0 ]]; then
+    exit_code=1
+fi
+
 black --check scripts/*.py
 if [[ $? -ne 0 ]]; then
     exit_code=1
